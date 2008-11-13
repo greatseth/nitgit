@@ -99,7 +99,6 @@ Shoes.app :title => "nitgit - grit commit browser", :width => APP_WIDTH do
     para "nitgit", :font => "Century Gothic", :size => 16, :stroke => white
     
     button "open repo" do
-      info ask_open_folder
       open_repo ask_open_folder
     end
     
@@ -107,7 +106,7 @@ Shoes.app :title => "nitgit - grit commit browser", :width => APP_WIDTH do
   end
   
   @commits = stack :width => COMMITS_WIDTH
-  @diffs   = stack :width => -COMMITS_WIDTH
+  @diffs   = stack :width => -COMMITS_WIDTH-gutter
   
   open_repo "~/p/nitgit"
 end
