@@ -12,8 +12,12 @@ DIFFS_WIDTH   = APP_WIDTH - COMMITS_WIDTH
 # TODO figure out how to override default styles
 BASE_FONT_SIZE = 9
 
-Shoes.app :title => "nitgrit - grit commit browser", :width => APP_WIDTH do
-  background "#c3d9ff"
+Shoes.app :title => "nitgit - grit commit browser", :width => APP_WIDTH do
+  def that_blue
+    "#c3d9ff"
+  end
+  
+  background that_blue
   
   ###
   
@@ -24,8 +28,6 @@ Shoes.app :title => "nitgrit - grit commit browser", :width => APP_WIDTH do
   def view_diffs(commit)
     commit.diffs.each do |d|
       stack :margin => [0,0,0,10] do
-        border black
-        
         d.diff.split("\n").each do |l|
           stack :padding => 1, :background => background_for_line(l) do
             para l, :size => BASE_FONT_SIZE, :margin => 0, :family => "Courier"
@@ -39,6 +41,7 @@ Shoes.app :title => "nitgrit - grit commit browser", :width => APP_WIDTH do
   
   def open_repo(directory)
     @repo = Grit::Repo.new(directory)
+    @name.text = File.basename directory
     load_repo
   end
   
@@ -48,11 +51,10 @@ Shoes.app :title => "nitgrit - grit commit browser", :width => APP_WIDTH do
     @commits.clear do
       @repo.commits.each_with_index do |commit,i|
         stack :padding => 5, :background => (i%2==0 ? gray(0.9) : white) do
-          info_style = { :size => BASE_FONT_SIZE, :margin => 0 }
-          para commit.id,      info_style
-          para commit.message, info_style
-          para commit.author,  info_style
-
+          para commit.id,      :size => BASE_FONT_SIZE, :margin => 0, :stroke => gray(0.6)
+          para commit.message, :size => BASE_FONT_SIZE, :margin => [0,5,0,5]
+          para commit.author,  :size => BASE_FONT_SIZE, :margin => 0, :stroke => gray(0.3)
+          
           click { view_commit commit }
         end
       end
@@ -63,7 +65,7 @@ Shoes.app :title => "nitgrit - grit commit browser", :width => APP_WIDTH do
     case (line[0] and line[0].chr)
     when "+" then "#97cb81"
     when "-" then "#e87770"
-    else gray(0.9)
+    else white
     end
   end
   
@@ -72,7 +74,18 @@ Shoes.app :title => "nitgrit - grit commit browser", :width => APP_WIDTH do
   def stack(options = {}, &block)
     if padding = options.delete(:padding)
       super options do
-        background options[:background]
+        background options[:background] if options[:background]
+        super options.merge(:margin => padding), &block
+      end
+    else
+      super
+    end
+  end
+  
+  def flow(options = {}, &block)
+    if padding = options.delete(:padding)
+      stack options do
+        background options[:background] if options[:background]
         super options.merge(:margin => padding), &block
       end
     else
@@ -82,15 +95,19 @@ Shoes.app :title => "nitgrit - grit commit browser", :width => APP_WIDTH do
   
   ###
   
-  @menu = flow do
-    background black
-    stroke white
+  @menu = flow :padding => [5,5,5,0], :background => black do
+    para "nitgit", :font => "Century Gothic", :size => 16, :stroke => white
     
     button "open repo" do
+      info ask_open_folder
       open_repo ask_open_folder
     end
+    
+    @name = para "", :stroke => that_blue, :margin_top => 5
   end
   
   @commits = stack :width => COMMITS_WIDTH
-  @diffs   = stack :width => 1.0, :margin_left => COMMITS_WIDTH
+  @diffs   = stack :width => -COMMITS_WIDTH
+  
+  open_repo "~/p/nitgit"
 end
