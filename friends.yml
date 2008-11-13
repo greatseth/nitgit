@@ -1,0 +1,571 @@
+--- 
+- !ruby/object:Twitter::Status 
+  created_at: Thu Nov 13 19:19:23 +0000 2008
+  favorited: false
+  id: "1004316334"
+  in_reply_to_status_id: "1004307372"
+  in_reply_to_user_id: "12695752"
+  source: web
+  text: "@dcurtisj I love the classics."
+  truncated: false
+  user: !ruby/object:Twitter::User 
+    description: Culture monger. Suit addict. And owner of SF's Isotope - the comic book lounge.
+    followers_count: "608"
+    id: "7697812"
+    location: "iPhone: 32.710392,-117.163152"
+    name: James Sime
+    profile_image_url: http://s3.amazonaws.com/twitter_production/profile_images/25426352/minime_normal.jpg
+    protected: false
+    screen_name: jamessime
+    url: http://isotopecomics.com
+- !ruby/object:Twitter::Status 
+  created_at: Thu Nov 13 19:08:55 +0000 2008
+  favorited: false
+  id: "1004300847"
+  in_reply_to_status_id: "1004048528"
+  in_reply_to_user_id: "11857402"
+  source: "&lt;a href=&quot;http://iconfactory.com/software/twitterrific&quot;&gt;twitterrific&lt;/a&gt;"
+  text: "@bryanwoods is that machine a joke?"
+  truncated: false
+  user: !ruby/object:Twitter::User 
+    description: GREAT
+    followers_count: "36"
+    id: "15181592"
+    location: Woodside, NY
+    name: SETH
+    profile_image_url: http://s3.amazonaws.com/twitter_production/profile_images/56138180/Photo_144_normal.jpg
+    protected: false
+    screen_name: greatseth
+    url: http://greatseth.com
+- !ruby/object:Twitter::Status 
+  created_at: Thu Nov 13 19:07:33 +0000 2008
+  favorited: false
+  id: "1004298858"
+  in_reply_to_status_id: ""
+  in_reply_to_user_id: ""
+  source: "&lt;a href=&quot;http://twitter.com/tweetsville&quot;&gt;Tweetsville&lt;/a&gt;"
+  text: Ubuntu Dell from 2003 is beginning to sigh what seems like its final breaths. Good night, sweet prince.
+  truncated: false
+  user: !ruby/object:Twitter::User 
+    description: Noise, Black Metal, Craft Brew, Single Malt, Contemporary Classical, iPhone Dev, Ruby on Rails, Startup Livin'.
+    followers_count: "182"
+    id: "11857402"
+    location: Greenpoint, New York
+    name: Bryan Woods
+    profile_image_url: http://s3.amazonaws.com/twitter_production/profile_images/62708225/shavedbeards2_normal.jpg
+    protected: false
+    screen_name: bryanwoods
+    url: ""
+- !ruby/object:Twitter::Status 
+  created_at: Thu Nov 13 18:52:12 +0000 2008
+  favorited: false
+  id: "1004275506"
+  in_reply_to_status_id: ""
+  in_reply_to_user_id: ""
+  source: "&lt;a href=&quot;http://twitpic.com/&quot;&gt;TwitPic&lt;/a&gt;"
+  text: http://twitpic.com/lk7i - Shoes. Thursday, November 13 2008. You?
+  truncated: false
+  user: !ruby/object:Twitter::User 
+    description: Culture monger. Suit addict. And owner of SF's Isotope - the comic book lounge.
+    followers_count: "607"
+    id: "7697812"
+    location: "iPhone: 32.710392,-117.163152"
+    name: James Sime
+    profile_image_url: http://s3.amazonaws.com/twitter_production/profile_images/25426352/minime_normal.jpg
+    protected: false
+    screen_name: jamessime
+    url: http://isotopecomics.com
+- !ruby/object:Twitter::Status 
+  created_at: Thu Nov 13 18:27:20 +0000 2008
+  favorited: false
+  id: "1004239787"
+  in_reply_to_status_id: ""
+  in_reply_to_user_id: ""
+  source: "&lt;a href=&quot;http://twitter.com/tweetsville&quot;&gt;Tweetsville&lt;/a&gt;"
+  text: Tweeting from Tweetville. Definitely killer app, and such a no-brainer. Great piece of software, and my cute little search app is stillborn.
+  truncated: false
+  user: !ruby/object:Twitter::User 
+    description: Noise, Black Metal, Craft Brew, Single Malt, Contemporary Classical, iPhone Dev, Ruby on Rails, Startup Livin'.
+    followers_count: "182"
+    id: "11857402"
+    location: Greenpoint, New York
+    name: Bryan Woods
+    profile_image_url: http://s3.amazonaws.com/twitter_production/profile_images/62708225/shavedbeards2_normal.jpg
+    protected: false
+    screen_name: bryanwoods
+    url: ""
+- !ruby/object:Twitter::Status 
+  created_at: Thu Nov 13 18:25:57 +0000 2008
+  favorited: false
+  id: "1004237568"
+  in_reply_to_status_id: ""
+  in_reply_to_user_id: ""
+  source: "&lt;a href=&quot;http://greatseth.com/aglet&quot;&gt;Aglet&lt;/a&gt;"
+  text: model.columns.group_by(&amp;:type).map { |t,g| g.sort_by(&amp;:name).map { |c| &quot;#{c.name.ljust model.column_names.map(&amp;:size).max}:#{c.type}&quot; } }
+  truncated: false
+  user: !ruby/object:Twitter::User 
+    description: GREAT
+    followers_count: "37"
+    id: "15181592"
+    location: Woodside, NY
+    name: SETH
+    profile_image_url: http://s3.amazonaws.com/twitter_production/profile_images/56138180/Photo_144_normal.jpg
+    protected: false
+    screen_name: greatseth
+    url: http://greatseth.com
+- !ruby/object:Twitter::Status 
+  created_at: Thu Nov 13 18:21:06 +0000 2008
+  favorited: false
+  id: "1004230072"
+  in_reply_to_status_id: "1003856469"
+  in_reply_to_user_id: "6730462"
+  source: web
+  text: "@rduffield If you're not using Rails, you should just require 'haml' in the first place."
+  truncated: false
+  user: !ruby/object:Twitter::User 
+    description: ""
+    followers_count: "113"
+    id: "12973272"
+    location: Seattle
+    name: Nathan Weizenbaum
+    profile_image_url: http://s3.amazonaws.com/twitter_production/profile_images/47218972/blue_pigeon-64_normal.png
+    protected: false
+    screen_name: nex3
+    url: http://nex-3.com
+- !ruby/object:Twitter::Status 
+  created_at: Thu Nov 13 18:19:26 +0000 2008
+  favorited: false
+  id: "1004227391"
+  in_reply_to_status_id: ""
+  in_reply_to_user_id: ""
+  source: "&lt;a href=&quot;http://help.twitter.com/index.php?pg=kb.page&amp;id=75&quot;&gt;txt&lt;/a&gt;"
+  text: "&quot;...but I prefer the shit of this world to whatever sweet ambrosias the next might offer&quot;"
+  truncated: false
+  user: !ruby/object:Twitter::User 
+    description: give 'er the old one-two
+    followers_count: "18"
+    id: "14989163"
+    location: portland
+    name: wholemilk
+    profile_image_url: http://s3.amazonaws.com/twitter_production/profile_images/60163338/cas_tat_pic_2_normal.JPG
+    protected: false
+    screen_name: wholemilk
+    url: ""
+- !ruby/object:Twitter::Status 
+  created_at: Thu Nov 13 18:17:01 +0000 2008
+  favorited: false
+  id: "1004223427"
+  in_reply_to_status_id: "1004222843"
+  in_reply_to_user_id: "14237651"
+  source: web
+  text: "@thekarladam thanks :)"
+  truncated: false
+  user: !ruby/object:Twitter::User 
+    description: ""
+    followers_count: "86"
+    id: "687033"
+    location: Bologna, Emilia-Romagna
+    name: Emanuel Carnevale
+    profile_image_url: http://s3.amazonaws.com/twitter_production/profile_images/51229522/twitter_normal.PNG
+    protected: false
+    screen_name: onigiri
+    url: http://emanuelcarnevale.com
+- !ruby/object:Twitter::Status 
+  created_at: Thu Nov 13 18:13:01 +0000 2008
+  favorited: false
+  id: "1004217159"
+  in_reply_to_status_id: "1004202019"
+  in_reply_to_user_id: "687033"
+  source: "&lt;a href=&quot;http://greatseth.com/aglet&quot;&gt;Aglet&lt;/a&gt;"
+  text: "@onigiri nahh, Hugh was just trying to help not do the text equivalent of wearing bling :P"
+  truncated: false
+  user: !ruby/object:Twitter::User 
+    description: GREAT
+    followers_count: "37"
+    id: "15181592"
+    location: Woodside, NY
+    name: SETH
+    profile_image_url: http://s3.amazonaws.com/twitter_production/profile_images/56138180/Photo_144_normal.jpg
+    protected: false
+    screen_name: greatseth
+    url: http://greatseth.com
+- !ruby/object:Twitter::Status 
+  created_at: Thu Nov 13 18:03:18 +0000 2008
+  favorited: false
+  id: "1004202019"
+  in_reply_to_status_id: "1004144166"
+  in_reply_to_user_id: "14237651"
+  source: web
+  text: "@thekarladam do you have a link to the development blog? I cannot find it.."
+  truncated: false
+  user: !ruby/object:Twitter::User 
+    description: ""
+    followers_count: "86"
+    id: "687033"
+    location: Bologna, Emilia-Romagna
+    name: Emanuel Carnevale
+    profile_image_url: http://s3.amazonaws.com/twitter_production/profile_images/51229522/twitter_normal.PNG
+    protected: false
+    screen_name: onigiri
+    url: http://emanuelcarnevale.com
+- !ruby/object:Twitter::Status 
+  created_at: Thu Nov 13 17:57:27 +0000 2008
+  favorited: false
+  id: "1004192954"
+  in_reply_to_status_id: "945563586"
+  in_reply_to_user_id: "3520"
+  source: web
+  text: "@seth Another fixed vs. variable width font rant is coming? :P"
+  truncated: false
+  user: !ruby/object:Twitter::User 
+    description: ""
+    followers_count: "86"
+    id: "687033"
+    location: Bologna, Emilia-Romagna
+    name: Emanuel Carnevale
+    profile_image_url: http://s3.amazonaws.com/twitter_production/profile_images/51229522/twitter_normal.PNG
+    protected: false
+    screen_name: onigiri
+    url: http://emanuelcarnevale.com
+- !ruby/object:Twitter::Status 
+  created_at: Thu Nov 13 17:36:47 +0000 2008
+  favorited: false
+  id: "1004160316"
+  in_reply_to_status_id: ""
+  in_reply_to_user_id: ""
+  source: "&lt;a href=&quot;http://twitterfeed.com&quot;&gt;twitterfeed&lt;/a&gt;"
+  text: "Beat_n_text: New Single released today BEAT_N_TEXT http://tinyurl.com/5w94na"
+  truncated: false
+  user: !ruby/object:Twitter::User 
+    description: "Student/ Rails Developer &amp; Artist "
+    followers_count: "454"
+    id: "14149164"
+    location: ""
+    name: Alphacore
+    profile_image_url: http://s3.amazonaws.com/twitter_production/profile_images/63646849/alphacore_Ad_normal.jpg
+    protected: false
+    screen_name: Alphacore
+    url: http://cogecoco.blogspot.com
+- !ruby/object:Twitter::Status 
+  created_at: Thu Nov 13 16:51:39 +0000 2008
+  favorited: false
+  id: "1004087623"
+  in_reply_to_status_id: ""
+  in_reply_to_user_id: ""
+  source: "&lt;a href=&quot;http://www.hellotxt.com/&quot;&gt;HelloTxt&lt;/a&gt;"
+  text: just released beat_n_text http://hellotxt.com/l/8mT4
+  truncated: false
+  user: !ruby/object:Twitter::User 
+    description: "Student/ Rails Developer &amp; Artist "
+    followers_count: "452"
+    id: "14149164"
+    location: ""
+    name: Alphacore
+    profile_image_url: http://s3.amazonaws.com/twitter_production/profile_images/63646849/alphacore_Ad_normal.jpg
+    protected: false
+    screen_name: Alphacore
+    url: http://cogecoco.blogspot.com
+- !ruby/object:Twitter::Status 
+  created_at: Thu Nov 13 16:45:34 +0000 2008
+  favorited: false
+  id: "1004077099"
+  in_reply_to_status_id: ""
+  in_reply_to_user_id: ""
+  source: "&lt;a href=&quot;http://www.twhirl.org/&quot;&gt;twhirl&lt;/a&gt;"
+  text: "English: for when you need to tell a stranger to go fuck themselves."
+  truncated: false
+  user: !ruby/object:Twitter::User 
+    description: Noise, Black Metal, Craft Brew, Single Malt, Contemporary Classical, iPhone Dev, Ruby on Rails, Startup Livin'.
+    followers_count: "182"
+    id: "11857402"
+    location: Greenpoint, New York
+    name: Bryan Woods
+    profile_image_url: http://s3.amazonaws.com/twitter_production/profile_images/62708225/shavedbeards2_normal.jpg
+    protected: false
+    screen_name: bryanwoods
+    url: ""
+- !ruby/object:Twitter::Status 
+  created_at: Thu Nov 13 16:44:24 +0000 2008
+  favorited: false
+  id: "1004075214"
+  in_reply_to_status_id: ""
+  in_reply_to_user_id: ""
+  source: "&lt;a href=&quot;http://twitterfeed.com&quot;&gt;twitterfeed&lt;/a&gt;"
+  text: "fixed the links in source code Post: Fixed the links so they work now you instantly click and get the s.. http://tinyurl.com/56t443"
+  truncated: false
+  user: !ruby/object:Twitter::User 
+    description: "Student/ Rails Developer &amp; Artist "
+    followers_count: "452"
+    id: "14149164"
+    location: ""
+    name: Alphacore
+    profile_image_url: http://s3.amazonaws.com/twitter_production/profile_images/63646849/alphacore_Ad_normal.jpg
+    protected: false
+    screen_name: Alphacore
+    url: http://cogecoco.blogspot.com
+- !ruby/object:Twitter::Status 
+  created_at: Thu Nov 13 16:44:23 +0000 2008
+  favorited: false
+  id: "1004075175"
+  in_reply_to_status_id: ""
+  in_reply_to_user_id: ""
+  source: "&lt;a href=&quot;http://twitterfeed.com&quot;&gt;twitterfeed&lt;/a&gt;"
+  text: "beat_n_text Released!!!: The single beat_n_text released today list share download enjoy!!! http://tinyurl.com/6lkoko"
+  truncated: false
+  user: !ruby/object:Twitter::User 
+    description: "Student/ Rails Developer &amp; Artist "
+    followers_count: "452"
+    id: "14149164"
+    location: ""
+    name: Alphacore
+    profile_image_url: http://s3.amazonaws.com/twitter_production/profile_images/63646849/alphacore_Ad_normal.jpg
+    protected: false
+    screen_name: Alphacore
+    url: http://cogecoco.blogspot.com
+- !ruby/object:Twitter::Status 
+  created_at: Thu Nov 13 16:41:31 +0000 2008
+  favorited: false
+  id: "1004070720"
+  in_reply_to_status_id: "1004060505"
+  in_reply_to_user_id: "1764931"
+  source: web
+  text: "@dtm3dd then I won't use it, thanks for the report.."
+  truncated: false
+  user: !ruby/object:Twitter::User 
+    description: ""
+    followers_count: "86"
+    id: "687033"
+    location: Bologna, Emilia-Romagna
+    name: Emanuel Carnevale
+    profile_image_url: http://s3.amazonaws.com/twitter_production/profile_images/51229522/twitter_normal.PNG
+    protected: false
+    screen_name: onigiri
+    url: http://emanuelcarnevale.com
+- !ruby/object:Twitter::Status 
+  created_at: Thu Nov 13 16:27:58 +0000 2008
+  favorited: false
+  id: "1004048528"
+  in_reply_to_status_id: ""
+  in_reply_to_user_id: ""
+  source: "&lt;a href=&quot;http://www.twhirl.org/&quot;&gt;twhirl&lt;/a&gt;"
+  text: "Retweeting @jasonfried: Ummm... http://tinyurl.com/6j66xe"
+  truncated: false
+  user: !ruby/object:Twitter::User 
+    description: Noise, Black Metal, Craft Brew, Single Malt, Contemporary Classical, iPhone Dev, Ruby on Rails, Startup Livin'.
+    followers_count: "182"
+    id: "11857402"
+    location: Greenpoint, New York
+    name: Bryan Woods
+    profile_image_url: http://s3.amazonaws.com/twitter_production/profile_images/62708225/shavedbeards2_normal.jpg
+    protected: false
+    screen_name: bryanwoods
+    url: ""
+- !ruby/object:Twitter::Status 
+  created_at: Thu Nov 13 16:15:57 +0000 2008
+  favorited: false
+  id: "1004028153"
+  in_reply_to_status_id: ""
+  in_reply_to_user_id: ""
+  source: web
+  text: "&quot;What does a writer say after sex?&quot; ... &quot;Was it as good for me as it was for you?&quot; - dfw"
+  truncated: false
+  user: !ruby/object:Twitter::User 
+    description: Noise, Black Metal, Craft Brew, Single Malt, Contemporary Classical, iPhone Dev, Ruby on Rails, Startup Livin'.
+    followers_count: "182"
+    id: "11857402"
+    location: Greenpoint, New York
+    name: Bryan Woods
+    profile_image_url: http://s3.amazonaws.com/twitter_production/profile_images/62708225/shavedbeards2_normal.jpg
+    protected: false
+    screen_name: bryanwoods
+    url: ""
+- !ruby/object:Twitter::Status 
+  created_at: Thu Nov 13 15:37:41 +0000 2008
+  favorited: false
+  id: "1003965596"
+  in_reply_to_status_id: ""
+  in_reply_to_user_id: ""
+  source: "&lt;a href=&quot;http://greatseth.com/aglet&quot;&gt;Aglet&lt;/a&gt;"
+  text: hey people, Felt 2 is hot, yo! http://www.felt2.com
+  truncated: false
+  user: !ruby/object:Twitter::User 
+    description: GREAT
+    followers_count: "37"
+    id: "15181592"
+    location: Woodside, NY
+    name: SETH
+    profile_image_url: http://s3.amazonaws.com/twitter_production/profile_images/56138180/Photo_144_normal.jpg
+    protected: false
+    screen_name: greatseth
+    url: http://greatseth.com
+- !ruby/object:Twitter::Status 
+  created_at: Thu Nov 13 15:34:13 +0000 2008
+  favorited: false
+  id: "1003959881"
+  in_reply_to_status_id: "1003478791"
+  in_reply_to_user_id: "14099654"
+  source: "&lt;a href=&quot;http://greatseth.com/aglet&quot;&gt;Aglet&lt;/a&gt;"
+  text: "@ussballantyne hey scott!"
+  truncated: false
+  user: !ruby/object:Twitter::User 
+    description: GREAT
+    followers_count: "37"
+    id: "15181592"
+    location: Woodside, NY
+    name: SETH
+    profile_image_url: http://s3.amazonaws.com/twitter_production/profile_images/56138180/Photo_144_normal.jpg
+    protected: false
+    screen_name: greatseth
+    url: http://greatseth.com
+- !ruby/object:Twitter::Status 
+  created_at: Thu Nov 13 15:09:02 +0000 2008
+  favorited: false
+  id: "1003919665"
+  in_reply_to_status_id: ""
+  in_reply_to_user_id: ""
+  source: "&lt;a href=&quot;http://iconfactory.com/software/twitterrific&quot;&gt;twitterrific&lt;/a&gt;"
+  text: Decaf coffee for a psychological boost.
+  truncated: false
+  user: !ruby/object:Twitter::User 
+    description: No ideas but in things.
+    followers_count: "916"
+    id: "761613"
+    location: Russian Hill, California
+    name: Evan
+    profile_image_url: http://s3.amazonaws.com/twitter_production/profile_images/62654469/icon_normal.png
+    protected: false
+    screen_name: _evan
+    url: http://1vy.org/
+- !ruby/object:Twitter::Status 
+  created_at: Thu Nov 13 15:01:11 +0000 2008
+  favorited: false
+  id: "1003906760"
+  in_reply_to_status_id: ""
+  in_reply_to_user_id: ""
+  source: "&lt;a href=&quot;http://iconfactory.com/software/twitterrific&quot;&gt;twitterrific&lt;/a&gt;"
+  text: Through security. Feeling nauseous, forgot my belt, didn't have time to shower. Not an auspicious start. But so excited to see @twigsy!
+  truncated: false
+  user: !ruby/object:Twitter::User 
+    description: No ideas but in things.
+    followers_count: "916"
+    id: "761613"
+    location: Russian Hill, California
+    name: Evan
+    profile_image_url: http://s3.amazonaws.com/twitter_production/profile_images/62654469/icon_normal.png
+    protected: false
+    screen_name: _evan
+    url: http://1vy.org/
+- !ruby/object:Twitter::Status 
+  created_at: Thu Nov 13 14:02:26 +0000 2008
+  favorited: false
+  id: "1003820087"
+  in_reply_to_status_id: ""
+  in_reply_to_user_id: ""
+  source: web
+  text: got a lovely lunchbox for...well, lunch ;) happy to dig into it
+  truncated: false
+  user: !ruby/object:Twitter::User 
+    description: ""
+    followers_count: "86"
+    id: "687033"
+    location: Bologna, Emilia-Romagna
+    name: Emanuel Carnevale
+    profile_image_url: http://s3.amazonaws.com/twitter_production/profile_images/51229522/twitter_normal.PNG
+    protected: false
+    screen_name: onigiri
+    url: http://emanuelcarnevale.com
+- !ruby/object:Twitter::Status 
+  created_at: Thu Nov 13 13:36:39 +0000 2008
+  favorited: false
+  id: "1003787382"
+  in_reply_to_status_id: ""
+  in_reply_to_user_id: ""
+  source: "&lt;a href=&quot;http://twitterhelp.blogspot.com/2008/05/twitter-via-mobile-web-mtwittercom.html&quot;&gt;mobile web&lt;/a&gt;"
+  text: heyyyy plane, HEY
+  truncated: false
+  user: !ruby/object:Twitter::User 
+    description: give 'er the old one-two
+    followers_count: "18"
+    id: "14989163"
+    location: portland
+    name: wholemilk
+    profile_image_url: http://s3.amazonaws.com/twitter_production/profile_images/60163338/cas_tat_pic_2_normal.JPG
+    protected: false
+    screen_name: wholemilk
+    url: ""
+- !ruby/object:Twitter::Status 
+  created_at: Thu Nov 13 13:21:07 +0000 2008
+  favorited: false
+  id: "1003768943"
+  in_reply_to_status_id: ""
+  in_reply_to_user_id: ""
+  source: "&lt;a href=&quot;http://www.stone.com/iPhone/Twittelator/&quot;&gt;Twittelator&lt;/a&gt;"
+  text: "Dream: Decades-long re-occurring dream locale (my dad's Allred-designed '60s bachelor pad) gifted to me by a sick uncle. Excited to move in!"
+  truncated: false
+  user: !ruby/object:Twitter::User 
+    description: Culture monger. Suit addict. And owner of SF's Isotope - the comic book lounge.
+    followers_count: "606"
+    id: "7697812"
+    location: "iPhone: 32.710392,-117.163152"
+    name: James Sime
+    profile_image_url: http://s3.amazonaws.com/twitter_production/profile_images/25426352/minime_normal.jpg
+    protected: false
+    screen_name: jamessime
+    url: http://isotopecomics.com
+- !ruby/object:Twitter::Status 
+  created_at: Thu Nov 13 12:37:21 +0000 2008
+  favorited: false
+  id: "1003721807"
+  in_reply_to_status_id: "1003708805"
+  in_reply_to_user_id: "674723"
+  source: web
+  text: "@rcarmo #Anita is dead... (look at the date on the airplane cover...)"
+  truncated: false
+  user: !ruby/object:Twitter::User 
+    description: ""
+    followers_count: "86"
+    id: "687033"
+    location: Bologna, Emilia-Romagna
+    name: Emanuel Carnevale
+    profile_image_url: http://s3.amazonaws.com/twitter_production/profile_images/51229522/twitter_normal.PNG
+    protected: false
+    screen_name: onigiri
+    url: http://emanuelcarnevale.com
+- !ruby/object:Twitter::Status 
+  created_at: Thu Nov 13 12:18:52 +0000 2008
+  favorited: false
+  id: "1003703562"
+  in_reply_to_status_id: "1003666248"
+  in_reply_to_user_id: "7665302"
+  source: web
+  text: "@olabini BTW, I do love your Ioke blog posts serie... You should think collecting them on a book on language design"
+  truncated: false
+  user: !ruby/object:Twitter::User 
+    description: ""
+    followers_count: "85"
+    id: "687033"
+    location: Bologna, Emilia-Romagna
+    name: Emanuel Carnevale
+    profile_image_url: http://s3.amazonaws.com/twitter_production/profile_images/51229522/twitter_normal.PNG
+    protected: false
+    screen_name: onigiri
+    url: http://emanuelcarnevale.com
+- !ruby/object:Twitter::Status 
+  created_at: Thu Nov 13 12:17:30 +0000 2008
+  favorited: false
+  id: "1003702150"
+  in_reply_to_status_id: "1003666248"
+  in_reply_to_user_id: "7665302"
+  source: web
+  text: "@olabini that's a good point. Italians have the worst english ever _also_ due to the top-notch dubbing system"
+  truncated: false
+  user: !ruby/object:Twitter::User 
+    description: ""
+    followers_count: "85"
+    id: "687033"
+    location: Bologna, Emilia-Romagna
+    name: Emanuel Carnevale
+    profile_image_url: http://s3.amazonaws.com/twitter_production/profile_images/51229522/twitter_normal.PNG
+    protected: false
+    screen_name: onigiri
+    url: http://emanuelcarnevale.com

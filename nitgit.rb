@@ -41,7 +41,12 @@ Shoes.app :title => "nitgit - grit commit browser", :width => APP_WIDTH do
   
   def open_repo(directory)
     @repo = Grit::Repo.new(directory)
+    
     @name.text = File.basename directory
+    
+    @branches.items = @repo.branches.map { |b| b.name }
+    @branches.choose "master"
+    
     load_repo
   end
   
@@ -103,10 +108,15 @@ Shoes.app :title => "nitgit - grit commit browser", :width => APP_WIDTH do
     end
     
     @name = para "", :stroke => that_blue, :margin_top => 5
+    
+    @branches = list_box do |b|
+      # alert "selected #{b.text}"
+    end
   end
   
   @commits = stack :width => COMMITS_WIDTH
   @diffs   = stack :width => -COMMITS_WIDTH-gutter
   
-  open_repo "~/p/nitgit"
+  # open ourself while developing. sassy!
+  open_repo Dir.pwd
 end
