@@ -71,12 +71,18 @@ Shoes.app :title => "nitgit - grit commit browser", :width => APP_WIDTH do
     
     @commits.clear do
       @repo.commits(@selected_branch, COMMITS_PER_PAGE, ((@page - 1) * COMMITS_PER_PAGE)).each_with_index do |commit,i|
-        stack :padding => 5, :background => (i%2==0 ? gray(0.9) : white) do
+        bg = (i%2==0 ? gray(0.9) : white)
+        stack :padding => 5, :background => bg do
           para commit.id,      :size => BASE_FONT_SIZE, :margin => 0, :stroke => gray(0.6)
           para commit.message, :size => BASE_FONT_SIZE, :margin => [0,5,0,5]
           para commit.author,  :size => BASE_FONT_SIZE, :margin => 0, :stroke => gray(0.3)
           
           click { view_commit commit }
+          # Think special slots need to be implemented as widgets for these to 
+          # work as expected..
+          # 
+          # hover { background blue }
+          # leave { background bg }
         end
       end
     end
@@ -100,19 +106,23 @@ Shoes.app :title => "nitgit - grit commit browser", :width => APP_WIDTH do
       open_repo ask_open_folder
     end
     
-    @name = para "", :stroke => blue, :margin_top => 5
+    @name = para "", :font => "Century Gothic", :stroke => blue,
+      :margin_top => 7, :margin_right => 8
     
-    @branches = list_box :margin_top => 3, :margin_left => 5 do |b|
+    @branches = list_box :margin_top => 3 do |b|
       @selected_branch = b.text
       load_repo
     end
     
     @pagination = flow :width => 100, :top => 5, :right => 5 do
       button "<" do
-        load_repo(@page - 1)
+        if not (page = @page - 1).zero?
+          load_repo page
+        end
       end
       @page_display = para @page, :stroke => green
       button ">" do
+        # TODO end of paging logic, currently will just advance to blank pages
         load_repo(@page + 1)
       end
     end
