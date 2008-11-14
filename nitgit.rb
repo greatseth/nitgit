@@ -16,6 +16,8 @@ COMMITS_WIDTH = 300
 # TODO figure out how to override default styles
 BASE_FONT_SIZE = 9
 
+COMMITS_PER_PAGE = 20
+
 Shoes.app :title => "nitgit - grit commit browser", :width => APP_WIDTH do
   extend Colors, SlotsWithPadding
   
@@ -63,10 +65,12 @@ Shoes.app :title => "nitgit - grit commit browser", :width => APP_WIDTH do
   end
   
   def load_repo(page = 1)
+    @page = page
+    
     @diffs.clear
     
     @commits.clear do
-      @repo.commits(@selected_branch).each_with_index do |commit,i|
+      @repo.commits(@selected_branch, COMMITS_PER_PAGE, ((@page - 1) * COMMITS_PER_PAGE)).each_with_index do |commit,i|
         stack :padding => 5, :background => (i%2==0 ? gray(0.9) : white) do
           para commit.id,      :size => BASE_FONT_SIZE, :margin => 0, :stroke => gray(0.6)
           para commit.message, :size => BASE_FONT_SIZE, :margin => [0,5,0,5]
@@ -101,6 +105,15 @@ Shoes.app :title => "nitgit - grit commit browser", :width => APP_WIDTH do
     @branches = list_box :margin_top => 3, :margin_left => 5 do |b|
       @selected_branch = b.text
       load_repo
+    end
+    
+    @pagination = flow :width => 85, :top => 5, :right => 5 do
+      button "<" do
+        load_repo(@page - 1)
+      end
+      button ">" do
+        load_repo(@page + 1)
+      end
     end
   end
   
