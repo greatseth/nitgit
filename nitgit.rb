@@ -19,7 +19,7 @@ BASE_FONT_SIZE = 9
 Shoes.app :title => "nitgit - grit commit browser", :width => APP_WIDTH do
   extend Colors, SlotsWithPadding
   
-  background that_blue
+  background blue
   
   ###
   
@@ -70,8 +70,8 @@ Shoes.app :title => "nitgit - grit commit browser", :width => APP_WIDTH do
   
   def background_for_line(line)
     case (line[0] and line[0].chr)
-    when "+" then "#97cb81"
-    when "-" then "#e87770"
+    when "+" then green
+    when "-" then red
     else white
     end
   end
@@ -85,7 +85,7 @@ Shoes.app :title => "nitgit - grit commit browser", :width => APP_WIDTH do
       open_repo ask_open_folder
     end
     
-    @name = para "", :stroke => that_blue, :margin_top => 5
+    @name = para "", :stroke => blue, :margin_top => 5
     
     @branches = list_box :margin_top => 3, :margin_left => 5 do |b|
       @selected_branch = b.text
