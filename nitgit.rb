@@ -5,17 +5,19 @@ end
 
 require "grit"
 
+%w(
+colors
+slots_with_padding
+).each { |x| require "lib/#{x}" }
+
 APP_WIDTH     = 900
 COMMITS_WIDTH = 300
-DIFFS_WIDTH   = APP_WIDTH - COMMITS_WIDTH
 
 # TODO figure out how to override default styles
 BASE_FONT_SIZE = 9
 
 Shoes.app :title => "nitgit - grit commit browser", :width => APP_WIDTH do
-  def that_blue
-    "#c3d9ff"
-  end
+  extend Colors, SlotsWithPadding
   
   background that_blue
   
@@ -54,7 +56,7 @@ Shoes.app :title => "nitgit - grit commit browser", :width => APP_WIDTH do
     @diffs.clear
     
     @commits.clear do
-      @repo.commits.each_with_index do |commit,i|
+      @repo.commits(@selected_branch).each_with_index do |commit,i|
         stack :padding => 5, :background => (i%2==0 ? gray(0.9) : white) do
           para commit.id,      :size => BASE_FONT_SIZE, :margin => 0, :stroke => gray(0.6)
           para commit.message, :size => BASE_FONT_SIZE, :margin => [0,5,0,5]
@@ -76,30 +78,6 @@ Shoes.app :title => "nitgit - grit commit browser", :width => APP_WIDTH do
   
   ###
   
-  def stack(options = {}, &block)
-    if padding = options.delete(:padding)
-      super options do
-        background options[:background] if options[:background]
-        super options.merge(:margin => padding), &block
-      end
-    else
-      super
-    end
-  end
-  
-  def flow(options = {}, &block)
-    if padding = options.delete(:padding)
-      stack options do
-        background options[:background] if options[:background]
-        super options.merge(:margin => padding), &block
-      end
-    else
-      super
-    end
-  end
-  
-  ###
-  
   @menu = flow :padding => [5,5,5,0], :background => black do
     para "nitgit", :font => "Century Gothic", :size => 16, :stroke => white
     
@@ -109,8 +87,9 @@ Shoes.app :title => "nitgit - grit commit browser", :width => APP_WIDTH do
     
     @name = para "", :stroke => that_blue, :margin_top => 5
     
-    @branches = list_box do |b|
-      # alert "selected #{b.text}"
+    @branches = list_box :margin_top => 3, :margin_left => 5 do |b|
+      @selected_branch = b.text
+      load_repo
     end
   end
   
