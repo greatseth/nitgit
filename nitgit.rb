@@ -65,7 +65,7 @@ Shoes.app :title => "nitgit - grit commit browser", :width => APP_WIDTH do
   end
   
   def load_repo(page = 1)
-    @page = page
+    @page_display.text = @page = page
     
     @diffs.clear
     
@@ -107,10 +107,11 @@ Shoes.app :title => "nitgit - grit commit browser", :width => APP_WIDTH do
       load_repo
     end
     
-    @pagination = flow :width => 85, :top => 5, :right => 5 do
+    @pagination = flow :width => 100, :top => 5, :right => 5 do
       button "<" do
         load_repo(@page - 1)
       end
+      @page_display = para @page, :stroke => green
       button ">" do
         load_repo(@page + 1)
       end
