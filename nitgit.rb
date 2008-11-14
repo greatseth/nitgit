@@ -82,7 +82,7 @@ Shoes.app :title => "nitgit - grit commit browser", :width => APP_WIDTH do
     case line
     when /^(\-|\+){3}/ then gray(0.3)
     when /^\+{1}/      then green
-    when /\-{1}/       then red
+    when /^\-{1}/       then red
     else white
     end
   end
