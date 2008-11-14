@@ -31,11 +31,21 @@ Shoes.app :title => "nitgit - grit commit browser", :width => APP_WIDTH do
     commit.diffs.each do |d|
       stack :margin => [0,0,0,10] do
         d.diff.split("\n").each do |l|
-          stack :padding => 1, :background => background_for_line(l) do
-            para l, :size => BASE_FONT_SIZE, :margin => 0, :family => "Courier"
-          end
+          present_line l
         end
       end
+    end
+  end
+  
+  def present_line(line)
+    style = { :size => BASE_FONT_SIZE, :margin => 0, :family => "Courier" }
+    
+    if line =~ /^(\-|\+){3}/
+      style.merge! :weight => "bold", :stroke => white
+    end
+    
+    stack :padding => 1, :background => background_for_line(line) do
+      para line, style
     end
   end
   
@@ -69,9 +79,10 @@ Shoes.app :title => "nitgit - grit commit browser", :width => APP_WIDTH do
   end
   
   def background_for_line(line)
-    case (line[0] and line[0].chr)
-    when "+" then green
-    when "-" then red
+    case line
+    when /^(\-|\+){3}/ then gray(0.3)
+    when /^\+{1}/      then green
+    when /\-{1}/       then red
     else white
     end
   end
