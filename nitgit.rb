@@ -86,6 +86,8 @@ Shoes.app :title => "nitgit - grit commit browser", :width => APP_WIDTH do
         end
       end
     end
+    
+    @prev.state = "disabled" if page == 1
   end
   
   def background_for_line(line)
@@ -115,13 +117,13 @@ Shoes.app :title => "nitgit - grit commit browser", :width => APP_WIDTH do
     end
     
     @pagination = flow :width => 100, :top => 5, :right => 5 do
-      button "<" do
+      @prev = button "<" do
         if not (page = @page - 1).zero?
           load_repo page
         end
       end
       @page_display = para @page, :stroke => green
-      button ">" do
+      @next = button ">" do
         # TODO end of paging logic, currently will just advance to blank pages
         load_repo(@page + 1)
       end
