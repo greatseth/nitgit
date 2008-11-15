@@ -123,13 +123,10 @@ Shoes.app :title => "nitgit - grit commit browser", :width => APP_WIDTH do
     
     @pagination = flow :width => 200, :top => 5, :right => 5 do
       @prev = button "< prev" do
-        if not (page = @page - 1).zero?
-          load_repo page
-        end
+        load_repo page
       end
       @page_display = para @page, :stroke => green
       @next = button "next >" do
-        # TODO end of paging logic, currently will just advance to blank pages
         load_repo(@page + 1)
       end
     end
