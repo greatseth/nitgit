@@ -70,7 +70,7 @@ Shoes.app :title => "nitgit - grit commit browser", :width => APP_WIDTH do
     @diffs.clear
     
     @commits.clear do
-      @repo.commits(@selected_branch, COMMITS_PER_PAGE, ((@page - 1) * COMMITS_PER_PAGE)).each_with_index do |commit,i|
+      commits_for_page.each_with_index do |commit,i|
         bg = (i%2==0 ? gray(0.9) : white)
         stack :padding => 5, :background => bg do
           para commit.id,      :size => BASE_FONT_SIZE, :margin => 0, :stroke => gray(0.6)
@@ -87,7 +87,12 @@ Shoes.app :title => "nitgit - grit commit browser", :width => APP_WIDTH do
       end
     end
     
-    @prev.state = "disabled" if page == 1
+    @prev.state = ("disabled" if page == 1)
+    @next.state = ("disabled" if commits_for_page(@page + 1).empty?)
+  end
+  
+  def commits_for_page(page = @page)
+    @repo.commits(@selected_branch, COMMITS_PER_PAGE, ((page - 1) * COMMITS_PER_PAGE))
   end
   
   def background_for_line(line)
@@ -116,7 +121,7 @@ Shoes.app :title => "nitgit - grit commit browser", :width => APP_WIDTH do
       load_repo
     end
     
-    @pagination = flow :width => 100, :top => 5, :right => 5 do
+    @pagination = flow :width => 150, :top => 5, :right => 5 do
       @prev = button "<" do
         if not (page = @page - 1).zero?
           load_repo page
