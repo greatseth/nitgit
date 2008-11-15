@@ -78,9 +78,6 @@ Shoes.app :title => "nitgit - grit commit browser", :width => APP_WIDTH do
           para commit.author,  :size => BASE_FONT_SIZE, :margin => 0, :stroke => gray(0.3)
           
           click { view_commit commit }
-          # Think special slots need to be implemented as widgets for these to 
-          # work as expected..
-          # 
           # hover { background blue }
           # leave { background bg }
         end
