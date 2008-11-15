@@ -74,7 +74,7 @@ Shoes.app :title => "nitgit - grit commit browser", :width => APP_WIDTH do
         bg = (i%2==0 ? gray(0.9) : white)
         stack :padding => 5, :background => bg do
           para commit.id,      :size => BASE_FONT_SIZE, :margin => 0, :stroke => gray(0.6)
-          para commit.message, :size => BASE_FONT_SIZE, :margin => [0,5,0,5]
+          para commit.message, :size => BASE_FONT_SIZE, :margin => [0,5,0,7], :leading => 1
           para commit.author,  :size => BASE_FONT_SIZE, :margin => 0, :stroke => gray(0.3)
           
           click { view_commit commit }
