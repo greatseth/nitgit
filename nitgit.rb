@@ -151,5 +151,5 @@ Shoes.app :title => "nitgit - grit commit browser", :width => APP_WIDTH do
   @diffs   = stack :width => -COMMITS_WIDTH-gutter
   
   # open ourself while developing. sassy!
-  open_repo File.dirname(__FILE__)
+  open_repo File.expand_path(File.dirname(__FILE__))
 end
