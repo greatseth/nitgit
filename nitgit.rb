@@ -136,7 +136,7 @@ Shoes.app :title => "nitgit - grit commit browser", :width => APP_WIDTH do
       load_repo
     end
     
-    @pagination = flow :width => 200, :top => 5, :right => 5 do
+    @pagination = flow :width => 200, :right => 5 do
       @prev = button "< prev" do
         load_repo page
       end
