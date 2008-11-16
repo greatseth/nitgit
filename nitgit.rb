@@ -69,23 +69,30 @@ Shoes.app :title => "nitgit - grit commit browser", :width => APP_WIDTH do
     
     @diffs.clear
     
+    @commits_list = {}
+    
     @commits.clear do
       commits_for_page.each_with_index do |commit,i|
-        bg = (i%2==0 ? gray(0.9) : white)
-        stack :padding => 5, :background => bg do
-          para commit.id,      :size => BASE_FONT_SIZE, :margin => 0, :stroke => gray(0.6)
-          para commit.message, :size => BASE_FONT_SIZE, :margin => [0,5,0,7], :leading => 1
-          para commit.author,  :size => BASE_FONT_SIZE, :margin => 0, :stroke => gray(0.3)
-          
-          click { view_commit commit }
-          # hover { background blue }
-          # leave { background bg }
-        end
+        bg = i%2==0 ? gray(0.9) : white
+        @commits_list[i] = stack { commit_list_item commit, bg }
+        
+        @commits_list[i].click { view_commit commit }
+        @commits_list[i].hover { @commits_list[i].clear { commit_list_item commit, blue } }
+        @commits_list[i].leave { @commits_list[i].clear { commit_list_item commit, bg } }
       end
     end
     
     @prev.state = ("disabled" if page == 1)
     @next.state = ("disabled" if commits_for_page(@page + 1).empty?)
+  end
+  
+  def commit_list_item(commit, bg)
+    background bg
+    stack :margin => 5 do
+      para commit.id,      :size => BASE_FONT_SIZE, :margin => 0, :stroke => gray(0.6)
+      para commit.message, :size => BASE_FONT_SIZE, :margin => [0,5,0,7], :leading => 1
+      para commit.author,  :size => BASE_FONT_SIZE, :margin => 0, :stroke => gray(0.3)
+    end
   end
   
   def commits_for_page(page = @page)
