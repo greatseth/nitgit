@@ -77,21 +77,28 @@ Shoes.app :title => "nitgit - grit commit browser", :width => APP_WIDTH do
         @commits_list[i] = stack { commit_list_item commit, bg }
         
         @commits_list[i].click { view_commit commit }
-        @commits_list[i].hover { @commits_list[i].clear { commit_list_item commit, blue } }
+        @commits_list[i].hover { @commits_list[i].clear { commit_list_item commit, green } }
         @commits_list[i].leave { @commits_list[i].clear { commit_list_item commit, bg } }
       end
     end
     
-    @prev.state = ("disabled" if page == 1)
+    @prev.state = ("disabled" if page == 1) 
     @next.state = ("disabled" if commits_for_page(@page + 1).empty?)
   end
   
   def commit_list_item(commit, bg)
     background bg
-    stack :margin => 5 do
-      para commit.id,      :size => BASE_FONT_SIZE, :margin => 0, :stroke => gray(0.6)
-      para commit.message, :size => BASE_FONT_SIZE, :margin => [0,5,0,7], :leading => 1
-      para commit.author,  :size => BASE_FONT_SIZE, :margin => 0, :stroke => gray(0.3)
+    merge = commit.parents.size > 1
+    stack :margin => (merge ? 2 : 5) do
+      para commit.id, :size => BASE_FONT_SIZE, :margin => 0, :stroke => gray(0.6) unless merge
+      
+      if merge
+        para commit.message, :size => BASE_FONT_SIZE-2, :margin => [0,2,0,4], :leading => 1, :weight => "bold"
+      else
+        para commit.message, :size => BASE_FONT_SIZE, :margin => [0,5,0,7], :leading => 1
+      end
+      
+      para commit.author, :size => BASE_FONT_SIZE, :margin => 0, :stroke => gray(0.3) unless merge
     end
   end
   
@@ -99,11 +106,15 @@ Shoes.app :title => "nitgit - grit commit browser", :width => APP_WIDTH do
     @repo.commits(@selected_branch, COMMITS_PER_PAGE, ((page - 1) * COMMITS_PER_PAGE))
   end
   
+  HEADING_LINE = /^(\-|\+){3}/
+  ADDED_LINE   = /^\+{1}/
+  REMOVED_LINE = /^\-{1}/
+  
   def background_for_line(line)
     case line
-    when /^(\-|\+){3}/ then gray(0.3)
-    when /^\+{1}/      then green
-    when /^\-{1}/       then red
+    when HEADING_LINE then gray(0.3)
+    when ADDED_LINE   then green
+    when REMOVED_LINE then red
     else white
     end
   end
@@ -140,5 +151,5 @@ Shoes.app :title => "nitgit - grit commit browser", :width => APP_WIDTH do
   @diffs   = stack :width => -COMMITS_WIDTH-gutter
   
   # open ourself while developing. sassy!
-  open_repo Dir.pwd
+  open_repo File.dirname(__FILE__)
 end
