@@ -3,7 +3,10 @@ Shoes.setup do
   gem "mojombo-grit"
 end
 
-require "grit"
+%w(
+grit
+iconv
+).each { |x| require x }
 
 %w(
 colors
@@ -47,7 +50,7 @@ Shoes.app :title => "nitgit - grit commit browser", :width => APP_WIDTH do
     end
     
     stack :padding => 1, :background => background_for_line(line) do
-      para line, style
+      para Iconv.conv("UTF-8", "LATIN1", line), style
     end
   end
   
