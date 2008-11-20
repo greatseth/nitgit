@@ -9,6 +9,8 @@ grit
 iconv
 ).each { |x| require x }
 
+# Grit::Git.git_timeout = 30
+
 %w(
 colors
 slots_with_padding

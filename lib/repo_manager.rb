@@ -10,19 +10,7 @@ module RepoManager
   ###
   
   def view_commit(commit)
-    @diffs.clear do
-      begin
-        view_diffs commit
-      rescue Grit::Git::GitTimeout
-        stack do
-          background blue
-          stack :margin => 5 do
-            para "Whoa, Git timed out! You probably have a HUMONGO file in this commit."
-            para "We'll try to handle this better in the future. Sorry!"
-          end
-        end
-      end
-    end
+    @diffs.clear { view_diffs commit }
   end
   
   def view_diffs(commit)
@@ -31,6 +19,14 @@ module RepoManager
         d.diff.split("\n").each do |l|
           present_line l
         end
+      end
+    end
+  rescue Grit::Git::GitTimeout
+    stack do
+      background blue
+      stack :margin => 5 do
+        para "Whoa, Git timed out! You probably have a ", strong("HUMONGO"), " file in this commit."
+        para "We'll try to handle this better in the future. Sorry!"
       end
     end
   end
