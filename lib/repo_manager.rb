@@ -57,7 +57,11 @@ module RepoManager
     
     @commits.clear do
       commits_for_page.each_with_index do |commit,i|
-        bg = i%2==0 ? gray(0.9) : white
+        bg = if commit.parents.size > 1
+          "#E8F8BD"
+        else
+          i%2==0 ? gray(0.9) : white
+        end
         @commits_list[i] = stack { commit_list_item commit, bg }
         
         @commits_list[i].click { view_commit commit }
@@ -72,17 +76,24 @@ module RepoManager
   
   def commit_list_item(commit, bg)
     background bg
+    # size = 36
+    # stack :width => size, :margin => [0,0,3,0] do
+    #   image "http://www.gravatar.com/avatar.php?gravatar_id=#{Digest::MD5.hexdigest(commit.author.email.downcase)}&s=#{size}",
+    #     :width => size, :height => size
+    # end
     merge = commit.parents.size > 1
-    stack :margin => (merge ? 2 : 5) do
-      para commit.id, :size => base_font_size, :margin => 0, :stroke => gray(0.6) unless merge
-      
+    stack :margin => (merge ? 2 : 5) do # :width => -size+4,
       if merge
-        para commit.message, :size => base_font_size-2, :margin => [0,2,0,4], :leading => 1, :weight => "bold"
+        para commit.message, :leading => 1, :size => base_font_size-2,
+          :margin => [0,2,0,4], :weight => "bold"
       else
-        para commit.message, :size => base_font_size, :margin => [0,5,0,7], :leading => 1
+        para commit.id, :size => base_font_size, :margin => 0, :stroke => gray(0.6)
+        
+        para commit.message, :leading => 1, :size => base_font_size,
+          :margin => [0,3,0,5]
+        
+        para commit.author, :size => base_font_size, :margin => 0, :stroke => gray(0.3)
       end
-      
-      para commit.author, :size => base_font_size, :margin => 0, :stroke => gray(0.3) unless merge
     end
   end
   

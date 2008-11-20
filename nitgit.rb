@@ -4,6 +4,7 @@ Shoes.setup do
 end
 
 %w(
+digest/md5
 grit
 iconv
 ).each { |x| require x }
@@ -23,27 +24,32 @@ Shoes.app :title => "nitgit - grit commit browser", :width => APP_WIDTH do
   
   background blue
   
-  @menu = flow :padding => [5,5,5,0], :background => black do
-    para "nitgit", :font => "Century Gothic", :size => 16, :stroke => white
+  stack :height => 36 do
+    background black
     
-    button "open repo" do
-      open_repo ask_open_folder
+    @menu = flow :margin => [7,7,7,0] do
+      para "nitgit", :font => "Century Gothic", :size => 16, :stroke => white, :margin => 0
+    
+      button "open repo", :margin => 0, :displace_top => -4 do
+        open_repo ask_open_folder
+      end
+    
+      @name = para "", :font => "Century Gothic", :stroke => blue, :margin => [0,4,6,0]
+    
+      @branches = list_box :margin => 0, :displace_top => -1 do |b| # [0,3,0,0] do |b|
+        @selected_branch = b.text
+        load_repo
+      end
+    
+      @pagination = flow :width => 200, :right => 5, :margin => 0, &method(:pagination_browse)
     end
-    
-    @name = para "", :font => "Century Gothic", :stroke => blue,
-      :margin_top => 7, :margin_right => 8
-    
-    @branches = list_box :margin_top => 3 do |b|
-      @selected_branch = b.text
-      load_repo
-    end
-    
-    @pagination = flow :width => 200, :right => 5, &method(:pagination_browse)
   end
   
   @commits = stack :width => COMMITS_WIDTH
   @diffs   = stack :width => -COMMITS_WIDTH-gutter
   
   # open ourself while developing. sassy!
-  open_repo File.expand_path(File.dirname(__FILE__))
+  # open_repo File.expand_path(File.dirname(__FILE__))
+  
+  open_repo ask_open_folder
 end
