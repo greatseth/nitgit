@@ -10,7 +10,19 @@ module RepoManager
   ###
   
   def view_commit(commit)
-    @diffs.clear { view_diffs commit }
+    @diffs.clear do
+      begin
+        view_diffs commit
+      rescue Grit::Git::GitTimeout
+        stack do
+          background blue
+          stack :margin => 5 do
+            para "Whoa, Git timed out! You probably have a HUMONGO file in this commit."
+            para "We'll try to handle this better in the future. Sorry!"
+          end
+        end
+      end
+    end
   end
   
   def view_diffs(commit)
