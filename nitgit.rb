@@ -27,7 +27,7 @@ Shoes.app :title => "nitgit - grit commit browser", :width => APP_WIDTH do
   
   background blue
   
-  stack do
+  stack :height => 36 do
     background black
     
     @menu = flow :margin => [7,7,7,0] do
