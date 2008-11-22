@@ -16,7 +16,8 @@ colors
 slots_with_padding
 repo_manager
 pagination
-).each { |x| require "lib/#{x}" }
+#spinner
+).each { |x| require "lib/#{x}" unless x[/#/] }
 
 APP_WIDTH     = 900
 COMMITS_WIDTH = 280
@@ -26,7 +27,7 @@ Shoes.app :title => "nitgit - grit commit browser", :width => APP_WIDTH do
   
   background blue
   
-  stack :height => 36 do
+  stack do
     background black
     
     @menu = flow :margin => [7,7,7,0] do
@@ -38,12 +39,23 @@ Shoes.app :title => "nitgit - grit commit browser", :width => APP_WIDTH do
     
       @name = para "", :font => "Century Gothic", :stroke => blue, :margin => [0,4,6,0]
     
-      @branches = list_box :margin => 0, :displace_top => -1 do |b| # [0,3,0,0] do |b|
+      @branches = list_box :margin => [0,3,0,0], :displace_top => -4 do |b|
         @selected_branch = b.text
         load_repo
       end
-    
+      
+      # @settings = flow :height => 10, :margin => 0 do
+        @hide_merges = check { load_repo @page }
+        para "hide merges", :stroke => white, :size => base_font_size
+      # end
+      
+      # button "settings" do
+      #         @settings.toggle
+      #       end
+      
       @pagination = flow :width => 200, :right => 5, :margin => 0, &method(:pagination_browse)
+      
+      # @spinner = spinner
     end
   end
   

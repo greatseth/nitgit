@@ -10,7 +10,9 @@ module RepoManager
   ###
   
   def view_commit(commit)
+    # @spinner.show
     @diffs.clear { view_diffs commit }
+    # @spinner.hide
   end
   
   def view_diffs(commit)
@@ -23,7 +25,7 @@ module RepoManager
     end
   rescue Grit::Git::GitTimeout
     stack do
-      background blue
+      background red
       stack :margin => 5 do
         para "Whoa, Git timed out! You probably have a ", strong("HUMONGO"), " file in this commit."
         para "We'll try to handle this better in the future. Sorry!"
@@ -65,11 +67,12 @@ module RepoManager
     
     @commits.clear do
       commits_for_page.each_with_index do |commit,i|
-        bg = if commit.parents.size > 1
+        bg = if merge? commit
           "#E8F8BD"
         else
           i%2==0 ? gray(0.9) : white
         end
+        
         @commits_list[i] = stack { commit_list_item commit, bg }
         
         @commits_list[i].click { view_commit commit }
@@ -89,7 +92,7 @@ module RepoManager
     #   image "http://www.gravatar.com/avatar.php?gravatar_id=#{Digest::MD5.hexdigest(commit.author.email.downcase)}&s=#{size}",
     #     :width => size, :height => size
     # end
-    merge = commit.parents.size > 1
+    merge = merge?(commit)
     stack :margin => (merge ? 2 : 5) do # :width => -size+4,
       if merge
         para commit.message, :leading => 1, :size => base_font_size-2,
@@ -106,7 +109,13 @@ module RepoManager
   end
   
   def commits_for_page(page = @page)
-    @repo.commits(@selected_branch, commits_per_page, ((page - 1) * commits_per_page))
+    commits = @repo.commits(@selected_branch, commits_per_page, ((page - 1) * commits_per_page))
+    commits.reject! { |c| merge? c } if @hide_merges.checked?
+    commits
+  end
+  
+  def merge?(commit)
+    commit.parents.size > 1
   end
   
   def background_for_line(line)
