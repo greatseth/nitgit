@@ -11,6 +11,7 @@ module RepoManager
   
   def view_commit(commit)
     # @spinner.show
+    slot.scroll_top = 0
     @diffs.clear { view_diffs commit }
     # @spinner.hide
   end
