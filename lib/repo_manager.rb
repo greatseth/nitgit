@@ -28,8 +28,8 @@ module RepoManager
     stack do
       background red
       stack :margin => 5 do
-        para "Whoa, Git timed out! You probably have a ", strong("HUMONGO"), " file in this commit."
-        para "We'll try to handle this better in the future. Sorry!"
+        para "Whoa, timed out! You probably have a ", strong("HUMONGO"), " file in this commit."
+        para "We'll try to handle this better in the future. Sorry. :("
       end
     end
   end
