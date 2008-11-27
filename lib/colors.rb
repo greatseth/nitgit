@@ -10,4 +10,10 @@ module Colors
   def red
     "#fb7154"
   end
+  
+  ###
+  
+  def base_font_size
+    9
+  end
 end

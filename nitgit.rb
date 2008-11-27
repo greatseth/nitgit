@@ -7,23 +7,32 @@ end
 digest/md5
 grit
 iconv
-).each { |x| require x }
+).each { |lib| require lib }
 
-# Grit::Git.git_timeout = 30
+class Grit::Commit
+  def merge?; parents.size > 1; end
+end
 
 %w(
+settings
 colors
-slots_with_padding
 repo_manager
 pagination
-#spinner
-).each { |x| require "lib/#{x}" unless x[/#/] }
+).each { |support| require "lib/#{support}" }
+
+# spinner 
+%w(
+commit_list_item
+labeled_check
+).each { |widget| require "lib/#{widget}"}
 
 APP_WIDTH     = 900
 COMMITS_WIDTH = 280
 
+###
+
 Shoes.app :title => "nitgit - grit commit browser", :width => APP_WIDTH do
-  extend Colors, SlotsWithPadding, RepoManager, Pagination
+  extend Settings, Colors, RepoManager, Pagination
   
   background blue
   
@@ -44,14 +53,13 @@ Shoes.app :title => "nitgit - grit commit browser", :width => APP_WIDTH do
         load_repo
       end
       
-      # @settings = flow :height => 10, :margin => 0 do
-        @hide_merges = check { load_repo @page }
-        para "hide merges", :stroke => white, :size => base_font_size
-      # end
-      
-      # button "settings" do
-      #         @settings.toggle
-      #       end
+      @hide_merges = labeled_check("hide merges",
+        :width => 100, :stroke => white, :size => base_font_size,
+        :checked => repo_settings[:hide_merges]) do
+          repo_settings[:hide_merges] = @hide_merges.checked?
+          save_settings!
+          load_repo @page
+      end
       
       @pagination = flow :width => 200, :right => 5, :margin => 0, &method(:pagination_browse)
       
@@ -61,9 +69,6 @@ Shoes.app :title => "nitgit - grit commit browser", :width => APP_WIDTH do
   
   @commits = stack :width => COMMITS_WIDTH
   @diffs   = stack :width => -COMMITS_WIDTH-gutter
-  
-  # open ourself while developing. sassy!
-  # open_repo File.expand_path(File.dirname(__FILE__))
   
   open_repo ask_open_folder
 end
