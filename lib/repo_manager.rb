@@ -48,7 +48,12 @@ module RepoManager
   ###
   
   def open_repo(directory)
-    @repo = Grit::Repo.new(directory)
+    @repo = begin
+      Grit::Repo.new(directory)
+    rescue Grit::InvalidGitRepositoryError
+      alert "Not a Git repo, son!"
+      return
+    end
     
     @name.text = File.basename directory
     
