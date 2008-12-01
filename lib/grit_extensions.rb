@@ -1,7 +1,7 @@
 require "digest/md5"
 
 module Grit
-  class Grit::Commit
+  class Commit
     def merge?
       parents.size > 1
     end
