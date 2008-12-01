@@ -36,6 +36,17 @@ Initially I set out to extend Gitnub, but I found learning the fundamentals of
 XCode's interface builder and RubyCocoa more difficult than I'd hoped. Shoes to the 
 rescue!
 
+## FEATURES
+
+* Merge commits are de-emphasized by default. You can optionally hide them all 
+  together. This setting should persis per repository for later sessions.
+* Clicking a commits id will copy it to your clipboard for sharing with others.
+
+Coming in the future:
+
+* Clicking an author's name will open your default email client with a 
+  message addressed to the author.
+
 ## LICENSE
 
 WTFPL. See the LICENSE file.
