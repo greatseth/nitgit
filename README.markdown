@@ -1,4 +1,5 @@
-= nitgit
+nitgit
+======
 
 nitgit is a Git history browser. It was inspired by Gitnub. I started nitgit mainly 
 because there was one thing I thought was missing from these types of tools: the ability 
@@ -16,10 +17,12 @@ Initially I set out to extend Gitnub, but I found learning the fundamentals of
 XCode's interface builder and RubyCocoa more difficult than I'd hoped. Shoes to the 
 rescue!
 
-= LICENSE
+LICENSE
+=======
 
 WTFPL. See the LICENSE file.
 
-= CONTRIBUTORS
+CONTRIBUTORS
+============
 
 * Seth Thomas Rasmussen <sethrasmussen@gmail.com>
