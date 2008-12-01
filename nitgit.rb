@@ -4,16 +4,12 @@ Shoes.setup do
 end
 
 %w(
-digest/md5
 grit
 iconv
 ).each { |lib| require lib }
 
-class Grit::Commit
-  def merge?; parents.size > 1; end
-end
-
 %w(
+grit_extensions
 settings
 colors
 repo_manager

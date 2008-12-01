@@ -5,7 +5,7 @@ class CommitListItem < Shoes::Widget
   
   attr_accessor :selected
   
-  def initialize(commit, default_bg_color, options = {})
+  def initialize(commit, default_bg_color)
     @commit   = commit
     @selected = false
     
@@ -22,14 +22,13 @@ class CommitListItem < Shoes::Widget
         background green
       else
         background @default_bg_color
+        @hover_bg = background(green).hide
       end
-    
-      @hover_bg = background(green).hide unless @selected
-    
+      
       gravatar_size = 36
       
       stack :width => gravatar_size do
-        image "http://www.gravatar.com/avatar.php?gravatar_id=#{Digest::MD5.hexdigest(@commit.author.email.downcase)}&s=#{gravatar_size}",
+        image @commit.author.gravatar_url(gravatar_size),
           :width => gravatar_size - 3, :height => gravatar_size - 3, :margin => 3
       end
       
@@ -38,13 +37,17 @@ class CommitListItem < Shoes::Widget
           para @commit.message, :leading => 1, :size => base_font_size-2,
             :margin => [0,2,0,4], :weight => "bold"
         else
-          para @commit.id, :size => base_font_size-1, :margin => 0,
+          id_link = link @commit.id do
+            self.clipboard = @commit.id
+          end
+          para id_link, :size => base_font_size-1, :margin => 0,
             :stroke => (@selected ? black : gray(0.6))
-        
+          
           para @commit.message, :leading => 1, :size => base_font_size,
             :margin => [0,3,0,5]
-        
-          para @commit.author, :size => base_font_size, :margin => 0,
+          
+          email_link = @commit.author # link @commit.author, :click => @commit.author.email
+          para email_link, :size => base_font_size, :margin => 0,
             :stroke => (@selected ? black : gray(0.3))
         end
       end
