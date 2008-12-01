@@ -9,7 +9,7 @@ class CommitListItem < Shoes::Widget
     @commit   = commit
     @selected = false
     
-    @stack = stack
+    @slot = flow
     
     @default_bg_color = default_bg_color
     
@@ -17,7 +17,7 @@ class CommitListItem < Shoes::Widget
   end
   
   def draw_contents
-    @stack.clear do
+    @slot.clear do
       if @selected
         background green
       else
@@ -26,18 +26,19 @@ class CommitListItem < Shoes::Widget
     
       @hover_bg = background(green).hide unless @selected
     
-      # size = 36
-      # stack :width => size, :margin => [0,0,3,0] do
-      #   image "http://www.gravatar.com/avatar.php?gravatar_id=#{Digest::MD5.hexdigest(@commit.author.email.downcase)}&s=#{size}",
-      #     :width => size, :height => size
-      # end
+      gravatar_size = 36
       
-      stack :margin => (@commit.merge? ? 2 : 5) do # , :width => -(size + 5) do
+      stack :width => gravatar_size do
+        image "http://www.gravatar.com/avatar.php?gravatar_id=#{Digest::MD5.hexdigest(@commit.author.email.downcase)}&s=#{gravatar_size}",
+          :width => gravatar_size - 3, :height => gravatar_size - 3, :margin => 3
+      end
+      
+      stack :margin => (@commit.merge? ? 2 : 5), :width => -gravatar_size do
         if @commit.merge?
           para @commit.message, :leading => 1, :size => base_font_size-2,
             :margin => [0,2,0,4], :weight => "bold"
         else
-          para @commit.id, :size => base_font_size, :margin => 0,
+          para @commit.id, :size => base_font_size-1, :margin => 0,
             :stroke => (@selected ? black : gray(0.6))
         
           para @commit.message, :leading => 1, :size => base_font_size,
