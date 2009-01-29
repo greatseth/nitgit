@@ -1,5 +1,5 @@
 Shoes.setup do
-  source "gems.github.com"
+  source "http://gems.github.com"
   gem "mojombo-grit"
 end
 
