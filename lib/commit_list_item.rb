@@ -18,11 +18,11 @@ class CommitListItem < Shoes::Widget
   
   def draw_contents
     @slot.clear do
-      if @selected
+      @background = if @selected
         background green
       else
         background @default_bg_color
-        @hover_bg = background(green).hide
+        # @hover_bg = background(green).hide
       end
       
       gravatar_size = 36
@@ -53,8 +53,8 @@ class CommitListItem < Shoes::Widget
       end
     
       if not @selected
-        hover { @hover_bg.show }
-        leave { @hover_bg.hide }
+        hover { @background.fill = green }
+        leave { @background.fill = @default_bg_color }
       end
     
       click do
