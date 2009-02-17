@@ -27,7 +27,7 @@ COMMITS_WIDTH = 280
 
 ###
 
-Shoes.app :title => "nitgit - grit commit browser", :width => APP_WIDTH do
+Shoes.app :title => "nitgit - git commit browser", :width => APP_WIDTH do
   extend Settings, Colors, RepoManager, Pagination
   
   background blue
